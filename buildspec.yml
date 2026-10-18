@@ -10,6 +10,7 @@ phases:
     commands:
       - echo "Verifying project structure and setting permissions..."
       - ls -la
+      - mkdir -p checker/output
       - chmod +x checker/run_tests.sh
   build:
     commands:
