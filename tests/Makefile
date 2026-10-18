@@ -7,10 +7,10 @@ all: build
 build: $(SERVICE_NAME) $(CLIENT_MANAGER_NAME)
 
 $(SERVICE_NAME): service.cpp ../src/protocol/components.h
-	$(COMPILER) -o $(SERVICE_NAME) service.cpp
+	$(COMPILER) -o $(SERVICE_NAME) service.cpp -lpthread
 
 $(CLIENT_MANAGER_NAME): client-manager.cpp ../src/protocol/components.h
-	$(COMPILER) -o $(CLIENT_MANAGER_NAME) client-manager.cpp
+	$(COMPILER) -o $(CLIENT_MANAGER_NAME) client-manager.cpp -lpthread
 
 run-service:
 	./$(SERVICE_NAME)
