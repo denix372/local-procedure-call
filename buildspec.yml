@@ -3,18 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing C++ compiler and essential Linux tools..."
+      - echo "Installing C++ compiler and testing utilities..."
       - apt-get update -y
-      - apt-get install -y build-essential
+      - apt-get install -y build-essential psmisc bc dos2unix
   pre_build:
     commands:
-      - echo "Verifying project structure and setting permissions..."
-      - ls -la
+      - echo "Fixing file permissions and line endings..."
       - mkdir -p checker/output
-      - chmod +x checker/run_tests.sh
+      - chmod +x checker/*.sh
+      - dos2unix checker/*.sh
   build:
     commands:
-      - echo "Compiling components and executing the test suite..."
+      - echo "Executing the test suite..."
       - cd checker && ./run_tests.sh
   post_build:
     commands:
