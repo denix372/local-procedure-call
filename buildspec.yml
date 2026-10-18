@@ -8,14 +8,20 @@ phases:
       - apt-get install -y build-essential psmisc bc dos2unix
   pre_build:
     commands:
-      - echo "Fixing file permissions and line endings..."
+      - echo "Fixing file permissions, line endings and creating IPC folders..."
       - mkdir -p checker/output
+      - mkdir -p src/.dispatcher
+      - mkdir -p src/.pipes
+      - chmod -R 777 src/.dispatcher
+      - chmod -R 777 src/.pipes
       - chmod +x checker/*.sh
       - dos2unix checker/*.sh
   build:
     commands:
-      - echo "Executing the test suite..."
-      - cd checker && ./run_tests.sh
+      - echo "Executing the test suite in verbose mode..."
+      - cd checker
+      # Rulăm bash cu -x ca să primim tot log-ul detaliat
+      - bash -x ./run_tests.sh
   post_build:
     commands:
-      - echo "AWS Cloud build and validation completed successfully!"
+      - echo "AWS Cloud build and validation completed!"
