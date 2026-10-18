@@ -15,4 +15,4 @@ run-dispatcher:
 	./$(DISPATCHER_NAME)
 
 clean:
-	rm $(DISPATCHER_NAME) *.o
+	rm -f $(DISPATCHER_NAME) *.o

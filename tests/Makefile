@@ -19,4 +19,4 @@ run-client-manager:
 	./$(CLIENT_MANAGER_NAME)
 
 clean:
-	rm $(SERVICE_NAME) $(CLIENT_MANAGER_NAME)
+	rm -f $(SERVICE_NAME) $(CLIENT_MANAGER_NAME)
